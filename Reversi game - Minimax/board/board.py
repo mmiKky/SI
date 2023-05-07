@@ -1,7 +1,15 @@
 
 class Board:
-    def __init__(self, symbol1, symbol2):
-        self.BOARD_SIZE = 8
+    BOARD_SIZE = 8
+    
+    def __init__(self, symbol1, symbol2, board=None):
+        self.player1_symbol = symbol1
+        self.player2_symbol = symbol2
+        if board != None: # create board as a copy of exising one
+            board = board.get_2D_list()
+            self.__board = [row[:] for row in board]
+            return
+        
         self.__board = []
         for row_nr in range(self.BOARD_SIZE):
             self.__board.append([])
@@ -17,6 +25,12 @@ class Board:
     def get_2D_list(self):
         return self.__board
     
+    def get_oponent_symbol(self, player_symbol):
+        if player_symbol == self.player1_symbol:
+            return self.player2_symbol
+        else:
+            return self.player1_symbol
+    
     def __flip_discs(self, player_symbol, move):
         (row, col) = move
         board = self.__board
@@ -30,7 +44,7 @@ class Board:
                 curr_row, curr_col = row + row_delta, col + col_delta
                 found_opponent = False
                 potential_discs_to_flip = []
-                while curr_row >= 0 and curr_row < len(board) and curr_col >= 0 and curr_col < len(board[0]):
+                while curr_row >= 0 and curr_row < self.BOARD_SIZE and curr_col >= 0 and curr_col < self.BOARD_SIZE:
                     if board[curr_row][curr_col] == ' ':
                         break
                     if board[curr_row][curr_col] == player_symbol:

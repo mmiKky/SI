@@ -5,14 +5,14 @@ POSSIBLE_MOVE_CHAR = '\u2588'
 
 def draw_board(board):
     size = len(board)
+    print_color = colorama.Fore.WHITE
     
     # columns
-    print()
-    print(" 0 1 2 3 4 5 6 7")
+    print(print_color)
+    print("  0 1 2 3 4 5 6 7")
     print(" +-+-+-+-+-+-+-+-+")
 
     # rows
-    print_color = colorama.Fore.WHITE
     for row in range(size):
         print(row, end="|")
         for col in range(size):

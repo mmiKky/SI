@@ -11,5 +11,5 @@ class PlayerInterface(ABC):
         self._symbol = value
 
     @abstractmethod
-    def make_move():
+    def make_move(self, board=None):
         pass
