@@ -32,7 +32,7 @@ def choose_players(menu_option):
         case 4:
             return MinimaxPlayer('X'), MinimaxPlayer('Y')
         case 5:
-            return MinimaxPlayer(), MinimaxAlfaBetaPlayer()
+            return MinimaxAlfaBetaPlayer(), MinimaxPlayer(strategy_nr=2)
         case 6:
             return MinimaxAlfaBetaPlayer('X'), MinimaxAlfaBetaPlayer('Y')
         case _:
